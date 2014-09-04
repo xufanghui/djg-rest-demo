@@ -1,0 +1,54 @@
+#注意：带【#】号开头的行为注释信息
+#1.添加公司
+    curl -X POST -d name='fangzheng' -d simple_name=fangzheng -d address='zhong guan cun No.18 at beijing' -d register_date=2014-09-21 -d money=280 -d type='PRIVATE' -d description='This is IT company.' -H 'Accept: application/json;' http://192.168.1.44:8100/company/
+    #返回信息如下：
+    #{"id": 1, "name": "fangzheng", "simple_name": "fangzheng", "address": "zhong guan cun No.18 at beijing", "register_date": "2014-09-21", "money": 280, "type": "PRIVATE", "description": "This is IT company."}
+
+#2.查询所有的公司
+    curl -H 'Accept: application/json;' http://192.168.1.44:8100/company/
+    #返回信息如下：
+    #[{"id": 1, "name": "fangzheng", "simple_name": "fangzheng", "address": "zhong guan cun No.18 at beijing", "register_date": "2014-09-21", "money": 280, "type": "PRIVATE", "description": "This is IT company."}]
+
+#3.更新公司信息
+    curl -X PUT -d name='fangzheng guoji' -d simple_name=fangzhengguoji -d address='zhong guan cun No.18 at beijing' -d register_date=2014-09-21 -d money=280 -d type='PRIVATE' -d description='This is IT company.' -H 'Accept: application/json;' http://192.168.1.44:8100/company/1/
+    #返回的信息如下：
+    #{"id": 1, "name": "fangzheng guoji", "simple_name": "fangzhengguoji", "address": "zhong guan cun No.18 at beijing", "register_date": "2014-09-21", "money": 280, "type": "PRIVATE", "description": "This is IT company."}
+
+#4.删除ID号为1的公司,删除后无返回信息
+    curl -X DELETE -H 'Accept: application/json;' http://192.168.1.44:8100/company/1/
+
+#5.查询此数据返回为[],表示表中无数据
+    curl -H 'Accept: application/json;' http://192.168.1.44:8100/company/
+    #返回信息如下：
+    #[]
+
+
+
+#6.添加部门
+    curl -X POST -d name='IT sector' -d simple_name='IT' -d description='information technology' -d company=2 -H 'Accept: application/json;' http://192.168.1.44:8100/sector/
+    #返回信息如下：
+    #{"id": 1, "name": "IT sector", "simple_name": "IT", "description": "information technology", "company": 2}
+
+#7.查询、更新和删除部门同2、3和4步骤基本相同
+
+#8.再添加一条部门
+    curl -X POST -d name='IT sector2' -d simple_name='IT2' -d description='information technology 2' -d company=2 -H 'Accept: application/json;' http://192.168.1.44:8100/sector/
+    #返回信息如下：
+    #{"id": 2, "name": "IT sector2", "simple_name": "IT2", "description": "information technology 2", "company": 2}
+
+#9.添加公司成员
+    curl -X POST -d name='fanghui' -d en_name='jason' -d birthday=2010-01-01 -d sex=na  -d address='huoying' -d job_name='developer' -d telephone=1301239802 -d email=12@12.co -d card_id=12345678901 -d sectors=1 -d sectors=2 -H 'Accept: application/json;' http://192.168.1.44:8100/staff/
+    #返回信息如下：
+    #{"id": 1, "name": "fanghui", "en_name": "jason", "birthday": "2010-01-01", "sex": "na", "address": "huoying", "job_name": "developer", "telephone": "1301239802", "email": "12@12.co", "card_id": "12345678901", "sectors": [1, 2]}
+
+#10.查询、更新和删除公司成员同2、3和4步骤基本相同
+
+
+
+
+
+
+
+
+
+

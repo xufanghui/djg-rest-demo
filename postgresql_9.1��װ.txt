@@ -1,0 +1,15 @@
+注：安装环境为virtual box 4.2.12 ,虚拟机系统为debian 7.1 wheely 64bit
+1.安装postgresql 9.1
+  apt-get install postgresql postgresql-9.1 postgresql-client-9.1 postgresql-crontrib-9.1 postgresql-server-dev-9.1
+2.初始化数据库
+  mkdir /postgres
+  chown postgres:postgres -R /postgres
+  chmod 755 -R /postgres
+  su postgres
+  /usr/lib/postgresql/9.1/bin/initdb -D /postgresql -E UTF-8 --local=zh_CN.UTF-8
+
+3.启动数据库：
+  /usr/lib/postgresql/9.1/bin/pg_ctl -D /postgresql -l logfile start
+    
+4.新建数据库，数据库的名称为test_db   
+  /usr/lib/postgresql/9.1/bin/createdb test_db
